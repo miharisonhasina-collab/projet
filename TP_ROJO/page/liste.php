@@ -3,18 +3,16 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-require_once "../inc/connection.php";
-require_once "../inc/fonction.php";
+require_once __DIR__ . "/../inc/connection.php";
+require_once __DIR__ . "/../inc/fonction.php";
 
-
-
-// afficherMenu();
-// afficherTitre("Liste des salles");
+afficherMenu();
+afficherTitre("Liste des salles");
 ?>
 
 <table border="1" cellpadding="10">
     <tr>
-        <th>Numero</th>
+        <th>Numéro</th>
         <th>Nom de la salle</th>
         <th>Action</th>
     </tr> 

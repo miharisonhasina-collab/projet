@@ -8,12 +8,15 @@ CREATE TABLE salle (
 
 CREATE TABLE consommation (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    salle_id INT,
+    salle_id INT NOT NULL,
     mois VARCHAR(20),
     annee INT,
     jirama FLOAT,
     solaire FLOAT,
-    groupe FLOAT
+    groupe FLOAT,
+    CONSTRAINT fk_consommation_salle
+        FOREIGN KEY (salle_id) REFERENCES salle(id)
+        ON DELETE CASCADE
 );
 
 INSERT INTO salle (nom) VALUES

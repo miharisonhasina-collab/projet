@@ -1,20 +1,20 @@
 <?php
-require_once "inc/connection.php";
-require_once "inc/fonction.php";
+require_once __DIR__ . '/../inc/connection.php';
+require_once __DIR__ . '/../inc/fonction.php';
 
-// afficherMenu();
-// afficherTitre("Resultat des consommation");
+afficherMenu();
+afficherTitre("Résultats des consommations");
 
 $sql = "SELECT
-salles.id,
-salles.nom,
+salle.id,
+salle.nom,
 COALESCE(SUM(consommation.jirama), 0) AS total_jirama,
 COALESCE(SUM(consommation.solaire), 0) AS total_solaire,
-COALESCE(SUM(consommation.groupe_electrogene), 0) AS groupe
-FROM salles
-LEFT JOIN consommation ON salles.id = consommation.salle_id
-GROUP BY salles.id, salles.nom
-ORDER BY salles.id";
+COALESCE(SUM(consommation.groupe), 0) AS total_groupe
+FROM salle
+LEFT JOIN consommation ON salle.id = consommation.salle_id
+GROUP BY salle.id, salle.nom
+ORDER BY salle.id";
 
 $resultat = $connexion->query($sql);
 ?>
@@ -31,15 +31,14 @@ $resultat = $connexion->query($sql);
         while ($ligne = $resultat->fetch(PDO::FETCH_ASSOC)) {
             $total = $ligne['total_jirama'] 
                    + $ligne['total_solaire'] 
-                   + $ligne['groupe'];
+                   + $ligne['total_groupe'];
         ?>
         <tr>
             <td><?php echo $ligne['nom']; ?></td>
             <td><?php echo $ligne['total_jirama']; ?></td>
             <td><?php echo $ligne['total_solaire']; ?></td>
-            <td><?php echo $ligne['groupe']; ?></td>
-            <td><?php echo $total; ?></td>
-            <td><?php echo $total; ?>KWh</td>
+            <td><?php echo $ligne['total_groupe']; ?> KWh</td>
+            <td><?php echo $total; ?> KWh</td>
         </tr>
         <?php
         }

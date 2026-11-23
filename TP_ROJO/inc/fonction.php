@@ -1,11 +1,14 @@
 <?php
-function affichierTitre($titre){
-    echo "<h2>" . $titre . "</h2>";
+function afficherTitre($titre) {
+    echo "<h2>" . htmlspecialchars($titre, ENT_QUOTES, 'UTF-8') . "</h2>";
 }
-function affichierMessage($message){
-    echo "<p>" . $message . "</p>";
+
+function afficherMessage($message) {
+    echo "<p>" . htmlspecialchars($message, ENT_QUOTES, 'UTF-8') . "</p>";
 }
-function affichierMenu(){
-    include "menu.php";
+
+function afficherMenu() {
+    $chemin = __DIR__ . "/../page/menu.php";
+    require $chemin;
 }
 ?>

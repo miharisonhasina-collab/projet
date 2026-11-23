@@ -1,20 +1,19 @@
 <?php
-
-require_once "inc/connection.php";
-require_once "inc/fonction.php";
-require_once "page/menu.php";
+require_once __DIR__ . "/inc/connection.php";
+require_once __DIR__ . "/inc/fonction.php";
+require_once __DIR__ . "/page/menu.php";
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Suivi de la consommation énergétique</title>
 </head>
 <body>
-    <h2>Suivi de la consommation eneregetique</h2>
-    <p>Bienvenue dans le susteme de suivi de la consommation
-        energetique des batiments du campus universitaire.
+    <h2>Suivi de la consommation énergétique</h2>
+    <p>Bienvenue dans le système de suivi de la consommation
+        énergétique des bâtiments du campus universitaire.
     </p>
     <h3>Menu principal</h3>
     <ul>
@@ -29,8 +28,8 @@ require_once "page/menu.php";
             </a>
         </li>
         <li>
-            <a href="resultat.php">
-                Resultat de la consommation
+            <a href="page/resultat.php">
+                Résultats de la consommation
             </a>
         </li>
     </ul>
